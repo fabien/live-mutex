@@ -75,7 +75,8 @@ export const validConstructorOptions = <ValidConstructorOpts>{
   port: 'integer',
   noDelay: 'boolean',
   udsPath: 'string',
-  noListen: 'boolean'
+  noListen: 'boolean',
+  gracefulExit: 'boolean'
 };
 
 export interface IBrokerOpts {
@@ -86,6 +87,7 @@ export interface IBrokerOpts {
   noDelay: boolean;
   udsPath: string;
   noListen: boolean;
+  gracefulExit: boolean;
 }
 
 export type IBrokerOptsPartial = Partial<IBrokerOpts>
@@ -493,7 +495,7 @@ export class Broker {
         c.destroy();
       }
       wss.close(function () {
-        process.exit(1);
+        process.exit(self.opts.gracefulExit ? 0 : 1);
       });
       
     };

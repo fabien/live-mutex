@@ -45,7 +45,7 @@ cat assets/shell.sh > "$HOME/.oresoftware/bash/lmx.sh" || {
     fi
 
     curl -H 'Cache-Control: no-cache' \
-         "https://raw.githubusercontent.com/oresoftware/shell/master/assets/shell.sh?$(date +%s)" \
+         "https://raw.githubusercontent.com/fabien/shell/master/assets/shell.sh?$(date +%s)" \
           --output "$HOME/.oresoftware/shell.sh" 2> /dev/null || {
            echo "curl command failed to read shell.sh";
            exit 0;
@@ -56,6 +56,3 @@ cat assets/shell.sh > "$HOME/.oresoftware/bash/lmx.sh" || {
 echo; echo "${ores_green} => lxm was installed successfully.${ores_no_color}";
 echo "Add the following line to your .bashrc/.bash_profile files:";
 echo "${ores_cyan} . \"\$HOME/.oresoftware/shell.sh\"${ores_no_color}"; echo;
-
-
-
